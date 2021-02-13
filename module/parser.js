@@ -77,6 +77,8 @@ async function _createActors (type, folderId, actorData) {
     }
   }
 
+  let actors = []
+
   for (const parsedCharacter of parsedCharacters) {
     // Separate out owned items
     const items = parsedCharacter.items
@@ -122,7 +124,11 @@ async function _createActors (type, folderId, actorData) {
         }
       }
     }
+
+    actors.push(actor)
   }
+
+  return actors
 }
 
 /**
@@ -147,4 +153,4 @@ function onRenderActorDirectory (app, html) {
   footer.append(button)
 }
 
-export default { onRenderActorDirectory }
+export default { onRenderActorDirectory, _createActors }
