@@ -228,7 +228,7 @@ Hooks.on('dcc.setMercurialMagicTable', (value, fromSystemSetting = false) => {
 
 // Entity creation hook
 Hooks.on('createActor', (entity, options, userId) => {
-  if (!game.user.isGM) { return }
+  if (!game.user.isGM || entity.data.img) { return }
 
   // Assign an appropriate DCC actor image
   const img = EntityImages.imageForActor(entity.type)
@@ -240,7 +240,7 @@ Hooks.on('createActor', (entity, options, userId) => {
 })
 
 Hooks.on('createItem', (entity, options, userId) => {
-  if (!game.user.isGM) { return }
+  if (!game.user.isGM || entity.data.img) { return }
 
   // Assign an appropriate DCC item image
   const img = EntityImages.imageForItem(entity.type)
